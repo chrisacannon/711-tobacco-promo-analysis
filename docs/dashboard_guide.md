@@ -25,8 +25,8 @@ The entry point for any reader. Four KPI cards give instant orientation; the dua
 | Total Retail Revenue | KPI card | Sum of `store_retail_price` across all transactions |
 | Promo Attach Rate | KPI card | % of transactions with an active promotion |
 | Reimbursement Variance % | KPI card | Recon variance as a % of expected reimbursement; negative = net shortfall |
-| Monthly Units Sold vs Promo Attach Rate | Dual-axis line chart | X-axis: months; left Y-axis: Total Units Sold (whole number); right Y-axis: Promo Attach Rate (%); shows how promotional coverage tracks with volume over time |
-| Volume by Product Category | Donut chart | Units sold split by product category (Cigarette / Smokeless / Cigar) |
+| Monthly Units Sold vs Promo Attach Rate | Dual-axis line chart | X-axis: months; left Y-axis: Total Units Sold; right Y-axis: Promo Attach Rate (%); shows how promotional coverage tracks with volume over time |
+| Volume by Product Category | Donut chart | Units sold split by product category (Premium / Value / Discount) |
 | Revenue by Regulatory Region | Bar chart | Total retail revenue grouped by regulatory region |
 
 ### DAX Measures
@@ -68,7 +68,7 @@ This page answers the questions a pricing analyst would ask after month-end clos
 | Promo Transactions by Reconciliation Status | Color-coded bar chart | Transaction count by `recon_flag` category; each status (CLEAN, MISSING_SCAN, WRONG_DISCOUNT, BUDGET_EXHAUSTED, PARTIAL_REIMB) rendered in a distinct color |
 | Transactions With Issues | KPI card | Count of transactions where `recon_flag` ≠ CLEAN |
 | Issue Rate | KPI card | Transactions With Issues as a % of all promotional transactions |
-| Expected vs Actual Reimbursement by Promotion | Color-coded scatter plot | One point per promotion; X-axis: Total Expected Reimbursement; Y-axis: Total Actual Reimbursement; color encodes reconciliation status; points below the diagonal = shortfall |
+| Expected vs Actual Reimbursement by Promotion | Color-coded scatter plot | One point per promotion; X-axis: Total Expected Reimbursement; Y-axis: Total Actual Reimbursement; color encodes manufacturer; points below the diagonal = shortfall |
 | Top 12 Promos with Issues × Reconciliation Flag | Matrix table | Rows: top 12 promotions by issue count; columns: reconciliation flag categories; cell values: transaction counts; heat-map color formatting highlights concentration of failures |
 
 ### DAX Measures
@@ -112,8 +112,8 @@ Tracks how promotional dollars are being utilized across manufacturers, surfaces
 |---|---|---|
 | Expected vs Actual Reimbursement by Manufacturer | Clustered bar chart | Side-by-side expected and actual reimbursement per manufacturer; gap between bars = shortfall |
 | Overall Budget Utilization | Fill-gauge KPI card | Single gauge showing total budget utilized as a % of total budget allocated across all active promotions |
-| Promotion Budget Tracker | Matrix table | One row per promotion: promotion name, manufacturer, budget total, budget utilized, utilization %, exhausted flag |
-| Transactions by Reconciliation Status | Color-coded stacked bar chart | Stacked bars per manufacturer; each segment is a reconciliation flag category; shows failure mode mix by manufacturer |
+| Promotion Budget Tracker | Matrix table | One row per promotion: promotion name, max reimbursement, total expected reimbursement, total actual reimbursement, budget utilization %, reimbursement variance $ |
+| Transactions by Reconciliation Status | Color-coded stacked bar chart | Stacked bars per funding program type (tiered, scan-based, guaranteed); each segment is a reconciliation flag category; shows recon flag mix by funding program type |
 
 ### DAX Measures
 
@@ -155,9 +155,9 @@ Supports field operations and zone management. The bar chart ranks stores; the c
 | Visual | Type | Description |
 |---|---|---|
 | Top 20 Stores by Retail Revenue | Bar chart | Horizontal bars ranked by Total Retail Revenue; color-coded by volume tier (High / Medium / Low) |
-| Base vs. Retail Price by Price Zone | Clustered bar chart | Side-by-side avg base price and avg retail price per pack for each price zone (Zones 1–8); illustrates the zone premium structure and the effect of promotions on final shelf price |
+| Base vs. Retail Price by Price Zone | Clustered bar chart | Side-by-side avg base price and avg retail price per pack for each price zone (Zones 1–8); illustrates the zone premium structure and the effect of the regulatory environment on final shelf price |
 | Units Sold by State | Filled map | State-level choropleth; color intensity = total units sold |
-| Avg Daily Volume vs Promo Attach Rate | Scatter plot | One point per store; X-axis: avg daily volume; Y-axis: promo attach rate; color-coded by regulatory region; outliers below the trend line signal execution gaps |
+| Avg Daily Volume vs Promo Attach Rate | Scatter plot | One point per store; X-axis: avg daily volume; Y-axis: promo attach rate; color-coded by regulatory region; illustrates that lower regulation regions naturally have a higher attach rate |
 
 ### DAX Measures
 
