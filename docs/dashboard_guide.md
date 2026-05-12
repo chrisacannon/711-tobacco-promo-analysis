@@ -269,16 +269,6 @@ All DAX measures are housed in a dedicated `_Measures` table (no data rows — m
 
 ---
 
-## Using This Dashboard for Interviews
-
-The five pages are designed to answer interview questions in sequence:
-
-- **"Walk me through the project"** → Executive Summary gives you the overview in under a minute
-- **"How did you handle complexity in the data?"** → Promo Reconciliation and Regulatory Impact show the analytical depth
-- **"How would you present this to a non-technical stakeholder?"** → Executive Summary and the KPI cards were built for that audience
-- **"Show me a DAX measure you're proud of"** → `Reimbursement Variance %`, `Zone Price Premium`, or `Stack Total Check` all demonstrate deliberate design thinking — not just aggregations
-
----
 
 *For field definitions of all columns referenced in this guide, see [data_dictionary.md](data_dictionary.md).*  
 *For the simulation rules behind the data, see [business_logic.md](business_logic.md).*
