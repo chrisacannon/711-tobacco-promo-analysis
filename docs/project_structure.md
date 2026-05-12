@@ -132,9 +132,6 @@ erDiagram
     fact_transactions }o--|| dim_manufacturer : "manufacturer_id"
     fact_transactions }o--|| dim_regulation : "regulation_id"
     fact_transactions }o--|| dim_calendar : "calendar_date"
-    dim_store }o--|| dim_regulation : "regulation_id"
-    dim_product }o--|| dim_manufacturer : "manufacturer_id"
-    dim_promotion }o--|| dim_manufacturer : "manufacturer_id"
 ```
 
 ---
@@ -151,16 +148,6 @@ erDiagram
 | `fact_transactions` → `dim_manufacturer` | `manufacturer_id` | Many-to-one | Denormalized from product for direct manufacturer filtering |
 | `fact_transactions` → `dim_regulation` | `regulation_id` | Many-to-one | Denormalized from store for direct regulatory filtering |
 | `fact_transactions` → `dim_calendar` | `calendar_date` | Many-to-one | Enables all time intelligence in Power BI |
-
-### Secondary Relationships (dimension → dimension)
-
-| Relationship | Join Keys | Purpose |
-|---|---|---|
-| `dim_store` → `dim_regulation` | `regulation_id` | Links store to its state's regulatory profile |
-| `dim_product` → `dim_manufacturer` | `manufacturer_id` | Links product to its manufacturer |
-| `dim_promotion` → `dim_manufacturer` | `manufacturer_id` | Links promotion to its funding manufacturer |
-
-> **Note on Power BI setup:** Secondary dimension-to-dimension relationships are defined in the data model but are inactive by default. In Power BI, use `USERELATIONSHIP()` in DAX measures when you need to traverse these paths directly (e.g., filtering transactions by manufacturer through the product path rather than the fact table path).
 
 ---
 
